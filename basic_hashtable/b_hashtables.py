@@ -15,7 +15,8 @@ class Pair:
 # '''
 class BasicHashTable:
     def __init__(self, capacity):
-        pass
+        self.capacity = capacity
+        self.storage = [None] *  capacity
 
 
 # '''
@@ -37,7 +38,10 @@ def hash(string, max):
 # If you are overwriting a value with a different key, print a warning.
 # '''
 def hash_table_insert(hash_table, key, value):
-    pass
+    index = hash(key, hash_table.capacity)
+    pair = Pair(key.value)
+    if hash_table.element[index] is not None:
+        print("warning overwrite" + str(hash_table.element[index])) 
 
 
 # '''
