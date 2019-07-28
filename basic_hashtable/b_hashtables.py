@@ -39,8 +39,8 @@ def hash(string, max):
 # '''
 def hash_table_insert(hash_table, key, value):
     index = hash(key, hash_table.capacity)
-    pair = Pair(key.value)
-    if hash_table.element[index] is not None:
+    pair = Pair(key, value)
+    if hash_table.storage[index] is not None:
         print("warning overwrite" + str(hash_table.element[index])) 
 
 
@@ -50,7 +50,11 @@ def hash_table_insert(hash_table, key, value):
 # If you try to remove a value that isn't there, print a warning.
 # '''
 def hash_table_remove(hash_table, key):
-    pass
+    index = hash(key, hash_table.capacity)
+
+    if hash_table.storage[index] is None:
+        print("warning, removing non existing key " + key)
+    hash_table.storage[index] = None
 
 
 # '''
@@ -59,7 +63,11 @@ def hash_table_remove(hash_table, key):
 # Should return None if the key is not found.
 # '''
 def hash_table_retrieve(hash_table, key):
-    pass
+    index = hash(key, hash_table.capacity)
+
+    if hash_table.storage[index] is None:
+        print("warning, no key value  " + key)
+    return hash_table.storage[index]
 
 
 def Testing():
